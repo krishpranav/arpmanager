@@ -3,12 +3,12 @@ use pnet::util::{MacAddr, ParseMacAddrErr};
 use pnet::packet::arp::{ArpOperation, ArpOperations};
 use clap::{Arg, App};
 
-use config::Config;
+use crate::configure::Configure;
 
 const ABOUT: &'static str = "
 Send an arp packet";
 
-pub fn cli_main() -> Config {
+pub fn cli_main() -> Configure {
     let matches = App::new("arpmanager")
                           .version("0.1.0")
                           .author("Krisna Pranav")
@@ -61,7 +61,7 @@ pub fn cli_main() -> Config {
         arp_operation = ArpOperations::Reply;
     }
 
-    let config: Config = Config {
+    let configure: Configure = Configure {
         interface: interface,
         source_ip: source_ip.unwrap(),
         source_mac: source_mac.unwrap(),
@@ -70,5 +70,5 @@ pub fn cli_main() -> Config {
         arp_operation: arp_operation
     };
 
-    config
+    configure
 }
