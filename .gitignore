@@ -1,1 +1,9 @@
+# build output
 /target
+
+# system cache
+.DS_Store
+
+# ide cache
+.vscode/
+.idea/
